@@ -5,8 +5,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -27,17 +25,10 @@ public class Util {
         return connection;
     }
 
-//    public static void main(String[] args) throws SQLException {
-//        System.out.println(getSessionHibernate().isClosed());
-//        getSessionHibernate().close();
-//
-//    }
-
     public static SessionFactory getSessionHibernate() {
         if (sessionFactory == null) {
             Configuration cfg = new Configuration()
                     .addAnnotatedClass(User.class)
-                    //.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
                     .setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLInnoDBDialect")
                     .setProperty("hibernate.connection.url", DB_URL)
                     .setProperty("hibernate.connection.username", DB_USERNAME)
