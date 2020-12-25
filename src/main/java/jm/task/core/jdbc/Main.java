@@ -1,18 +1,36 @@
 package jm.task.core.jdbc;
 
-import jm.task.core.jdbc.dao.UserDaoJDBCImpl;
+import jm.task.core.jdbc.model.User;
+import jm.task.core.jdbc.service.UserService;
+import jm.task.core.jdbc.service.UserServiceImpl;
+import java.sql.SQLException;
+import java.util.List;
 
 public class Main {
-    public static void main(String[] args) {
-        UserDaoJDBCImpl userDaoJDBC = new UserDaoJDBCImpl();
+    public static void main(String[] args) throws SQLException {
+        UserService userService = new UserServiceImpl();
 
-        userDaoJDBC.createUsersTable();
-        userDaoJDBC.saveUser("Alex","Лев", (byte) 25);
-        userDaoJDBC.saveUser("Max","Mad", (byte) 54);
-        userDaoJDBC.saveUser("Иван","Грозный", (byte) 30);
-        userDaoJDBC.saveUser("Георгий","Дронов", (byte) 24);
-        userDaoJDBC.getAllUsers().forEach(System.out::println);
-        userDaoJDBC.cleanUsersTable();
-        userDaoJDBC.dropUsersTable();
+        userService.createUsersTable();
+
+        User user = new User("Fyodor", "Fyodorov", (byte) 25);
+        userService.saveUser(user.getName(), user.getLastName(), user.getAge());
+        System.out.printf("User с именем – %s добавлен в базу данных\n", user.getName());
+
+
+        user = new User("Ivan", "Ivanov", (byte) 56);
+        userService.saveUser(user.getName(), user.getLastName(), user.getAge());
+        System.out.printf("User с именем – %s добавлен в базу данных\n", user.getName());
+
+
+        user = new User("Sergei", "Sergeev", (byte) 90);
+        userService.saveUser(user.getName(), user.getLastName(), user.getAge());
+        System.out.printf("User с именем – %s добавлен в базу данных\n", user.getName());
+
+        List<User> list = userService.getAllUsers();
+        System.out.println(list);
+
+        userService.createUsersTable();
+
+        userService.dropUsersTable();
     }
 }
