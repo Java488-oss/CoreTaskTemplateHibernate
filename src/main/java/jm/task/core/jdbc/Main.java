@@ -28,9 +28,9 @@ public class Main {
         List<User> list = userService.getAllUsers();
         System.out.println(list);
 
-        userService.createUsersTable();
-
+        userService.cleanUsersTable();
         userService.dropUsersTable();
+
 
     }
 }

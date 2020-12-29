@@ -63,9 +63,9 @@
         </dependency>
 
         <dependency>
-            <groupId>org.hibernate</groupId>
+            <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>4.3.10.Final</version>
+            <version>6.0.0.Alpha6</version>
         </dependency>
         <dependency>
             <groupId>org.example</groupId>

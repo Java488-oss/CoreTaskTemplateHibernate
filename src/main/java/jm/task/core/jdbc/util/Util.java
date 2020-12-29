@@ -10,7 +10,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Util {
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/testdb";
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/testdb?verifyServerCertificate=false&useSSL=false&requireSSL=false&useLegacyDatetimeCode=false&amp&serverTimezone=UTC";
     private static final String DB_USERNAME = "root";
     private static final String DB_PASSWORD = "root";
     private static Connection connection = null;
